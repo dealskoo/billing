@@ -25,7 +25,10 @@ class BillingServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if ($this->app->runningInConsole()) {
+            $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
+        }
+
         Cashier::useCustomerModel(Seller::class);
-        $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
     }
 }
