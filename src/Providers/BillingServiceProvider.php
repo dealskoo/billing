@@ -2,7 +2,9 @@
 
 namespace Dealskoo\Billing\Providers;
 
+use Dealskoo\Billing\Models\Seller;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Cashier\Cashier;
 
 class BillingServiceProvider extends ServiceProvider
 {
@@ -13,7 +15,7 @@ class BillingServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        Cashier::ignoreMigrations();
     }
 
     /**
@@ -23,6 +25,7 @@ class BillingServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Cashier::useCustomerModel(Seller::class);
+        $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
     }
 }
