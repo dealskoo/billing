@@ -20,6 +20,9 @@
     </coverage>
 
     <php>
-
+        <env name="STRIPE_KEY"
+             value="pk_test_51KQpcOHTfz9fZdBGCdoGJasWleGryovpwOQIXMFM2jdH0jVt5B2nBb3V23G7flNnoY3nTy4pLw1p8UHofFlyAzRW00BoW8SRU4"/>
+        <env name="STRIPE_SECRET"
+             value="sk_test_51KQpcOHTfz9fZdBGKcgb6cack8GiLTpT82e46z8XFdzArDy7gmuBluwIS54vI0snApzYtfwektKuvkOwvwc81zMa00YDVfPFPs"/>
     </php>
 </phpunit>
