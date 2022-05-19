@@ -30,5 +30,7 @@ class BillingServiceProvider extends ServiceProvider
         }
 
         Cashier::useCustomerModel(Seller::class);
+        Cashier::calculateTaxes();
+
     }
 }
