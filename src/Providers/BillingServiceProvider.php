@@ -3,6 +3,8 @@
 namespace Dealskoo\Billing\Providers;
 
 use Dealskoo\Admin\Facades\AdminMenu;
+use Dealskoo\Admin\Facades\PermissionManager;
+use Dealskoo\Admin\Permission;
 use Dealskoo\Billing\Models\Seller;
 use Dealskoo\Seller\Facades\SellerMenu;
 use Illuminate\Support\ServiceProvider;
@@ -48,6 +50,8 @@ class BillingServiceProvider extends ServiceProvider
         AdminMenu::dropdown('billing::billing.billing', function ($menu) {
 
         }, ['icon' => 'uil-usd-circle', 'permission' => 'billing.billing'])->order(98);
+
+        PermissionManager::add(new Permission('billing.billing', 'Billing'));
 
         SellerMenu::dropdown('billing::billing.billing', function ($menu) {
 
