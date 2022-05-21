@@ -89,10 +89,13 @@
                                     <td>
                                         @isset($default)
                                             @if($method->id != $default->id)
-                                                <a href="{{$method->id}}" class="action-icon"
+                                                <a href="{{ route('seller.payment.update',$method->id) }}"
+                                                   onclick="event.preventDefault();submit_form('#update-form',this)"
+                                                   class="action-icon"
                                                    title="{{ __('billing::billing.set_default') }}"><i
                                                         class="mdi mdi-disc"></i></a>
-                                                <a href=""
+                                                <a href="{{ route('seller.payment.destroy',$method->id) }}"
+                                                   onclick="event.preventDefault();submit_form('#delete-form',this)"
                                                    class="action-icon delete-btn"><i
                                                         class="mdi mdi-delete"></i></a>
                                             @endif
@@ -102,6 +105,14 @@
                             @endforeach
                             </tbody>
                         </table>
+                        <form id="update-form" method="post" class="d-none">
+                            @csrf
+                            @method('PUT')
+                        </form>
+                        <form id="delete-form" method="post" class="d-none">
+                            @csrf
+                            @method('DELETE')
+                        </form>
                     </div>
                 </div>
             </div>
@@ -144,5 +155,12 @@
                 }
             });
         });
+
+        function submit_form(id, btn) {
+            let action = $(btn).attr('href');
+            let form = $(id);
+            form.attr('action', action);
+            form.submit();
+        }
     </script>
 @endsection

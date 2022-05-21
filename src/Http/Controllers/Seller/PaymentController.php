@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class PaymentController extends SellerController
 {
-    public function methods(Request $request)
+    public function index(Request $request)
     {
         $methods = $request->user()->paymentMethods();
         $default = $request->user()->defaultPaymentMethod();
@@ -26,7 +26,19 @@ class PaymentController extends SellerController
         $paymentMethod = $request->input('payment_method');
         $user->addPaymentMethod($paymentMethod);
         $user->updateDefaultPaymentMethod($paymentMethod);
-        return redirect(route('seller.payment.methods'));
+        return redirect(route('seller.payment.index'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->user()->updateDefaultPaymentMethod($id);
+        return redirect(route('seller.payment.index'));
+    }
+
+    public function destroy(Request $request, $id)
+    {
+        $request->user()->deletePaymentMethod($id);
+        return redirect(route('seller.payment.index'));
     }
 }
 
