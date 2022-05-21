@@ -9,6 +9,7 @@ class PaymentController extends SellerController
 {
     public function methods(Request $request)
     {
-        return view('billing::seller.payment.methods');
+        return view('billing::seller.payment.methods', ['intent' => $request->user()->createSetupIntent()]);
     }
 }
+
