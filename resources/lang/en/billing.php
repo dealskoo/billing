@@ -2,6 +2,7 @@
 return [
     'billing' => 'Billing',
     'subscription' => 'Subscription',
+    'payment_methods' => 'Payment Methods',
     'subscription_history' => 'Subscription History',
     'plans' => 'Plans',
     'plan' => 'Plan',
