@@ -75,8 +75,29 @@
                                                 <li>{{ $item }}</li>
                                             @endforeach
                                         </ul>
-                                        <a href="{{ route('seller.subscription.form',$plan['stripe_id']) }}"
-                                           class="btn btn-primary mt-4 mb-2 rounded-pill">{{ __('billing::billing.subscribe') }}</a>
+                                        @auth('seller')
+                                            @if(request()->user('seller')->subscribedToPrice($plan['stripe_id'],'default'))
+                                                @if(request()->user('seller')->subscription('default')->onGracePeriod())
+                                                    <a href="{{ route('seller.subscription.resume') }}"
+                                                       class="btn btn-secondary mt-4 mb-2 rounded-pill">{{ __('billing::billing.resume') }}</a>
+                                                @else
+                                                    <a href="{{ route('seller.subscription.cancel') }}"
+                                                       class="btn btn-secondary mt-4 mb-2 rounded-pill">{{ __('billing::billing.cancel') }}</a>
+                                                @endif
+                                            @else
+                                                @if(request()->user('seller')->subscribedToProduct(\Dealskoo\Billing\Facades\Price::products(),'default'))
+                                                    <a href="{{ route('seller.subscription.swap',$plan['stripe_id']) }}"
+                                                       class="btn btn-primary mt-4 mb-2 rounded-pill">{{ __('billing::billing.choose_plan') }}</a>
+                                                @else
+                                                    <a href="{{ route('seller.subscription.form',$plan['stripe_id']) }}"
+                                                       class="btn btn-primary mt-4 mb-2 rounded-pill">{{ __('billing::billing.subscribe') }}</a>
+                                                @endif
+                                            @endif
+                                        @endauth
+                                        @guest('seller')
+                                            <a href="{{ route('seller.subscription.form',$plan['stripe_id']) }}"
+                                               class="btn btn-primary mt-4 mb-2 rounded-pill">{{ __('billing::billing.subscribe') }}</a>
+                                        @endguest
                                     </div>
                                 </div> <!-- end Pricing_card -->
                             </div> <!-- end col -->
@@ -106,8 +127,29 @@
                                                 <li>{{ __($item) }}</li>
                                             @endforeach
                                         </ul>
-                                        <a href="{{ route('seller.subscription.form',$plan['stripe_id']) }}"
-                                           class="btn btn-primary mt-4 mb-2 rounded-pill">{{ __('billing::billing.subscribe') }}</a>
+                                        @auth('seller')
+                                            @if(request()->user('seller')->subscribedToPrice($plan['stripe_id'],'default'))
+                                                @if(request()->user('seller')->subscription('default')->onGracePeriod())
+                                                    <a href="{{ route('seller.subscription.resume') }}"
+                                                       class="btn btn-secondary mt-4 mb-2 rounded-pill">{{ __('billing::billing.resume') }}</a>
+                                                @else
+                                                    <a href="{{ route('seller.subscription.cancel') }}"
+                                                       class="btn btn-secondary mt-4 mb-2 rounded-pill">{{ __('billing::billing.cancel') }}</a>
+                                                @endif
+                                            @else
+                                                @if(request()->user('seller')->subscribedToProduct(\Dealskoo\Billing\Facades\Price::products(),'default'))
+                                                    <a href="{{ route('seller.subscription.swap',$plan['stripe_id']) }}"
+                                                       class="btn btn-primary mt-4 mb-2 rounded-pill">{{ __('billing::billing.choose_plan') }}</a>
+                                                @else
+                                                    <a href="{{ route('seller.subscription.form',$plan['stripe_id']) }}"
+                                                       class="btn btn-primary mt-4 mb-2 rounded-pill">{{ __('billing::billing.subscribe') }}</a>
+                                                @endif
+                                            @endif
+                                        @endauth
+                                        @guest('seller')
+                                            <a href="{{ route('seller.subscription.form',$plan['stripe_id']) }}"
+                                               class="btn btn-primary mt-4 mb-2 rounded-pill">{{ __('billing::billing.subscribe') }}</a>
+                                        @endguest
                                     </div>
                                 </div> <!-- end Pricing_card -->
                             </div> <!-- end col -->

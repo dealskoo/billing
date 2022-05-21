@@ -23,8 +23,12 @@ Route::middleware(['web', 'seller_locale'])->prefix(config('seller.route.prefix'
         Route::resource('payment', PaymentController::class)->except(['create', 'edit']);
 
         Route::get('/subscription/history', [SubscriptionController::class, 'index'])->name('subscription.history');
+        Route::get('/subscription/swap/{id}', [SubscriptionController::class, 'swap'])->name('subscription.swap');
+        Route::get('/subscription/cancel', [SubscriptionController::class, 'cancel'])->name('subscription.cancel');
+        Route::get('/subscription/resume', [SubscriptionController::class, 'resume'])->name('subscription.resume');
         Route::get('/subscription/{id}', [SubscriptionController::class, 'form'])->name('subscription.form');
         Route::post('/subscription', [SubscriptionController::class, 'store'])->name('subscription.store');
+
         Route::middleware(['password.confirm:seller.password.confirm'])->group(function () {
 
         });

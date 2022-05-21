@@ -2,6 +2,7 @@
 
 namespace Dealskoo\Billing;
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Cache;
 use Laravel\Cashier\Cashier;
 
@@ -70,6 +71,18 @@ class Price
                     return $p;
                 }
             }
+        }
+    }
+
+    public function products()
+    {
+        if (Cache::has('stripe_product_ids')) {
+            return Cache::get('stripe_product_ids');
+        } else {
+            $products = Cashier::stripe()->products->all();
+            $stripe_product_ids = Arr::pluck($products->data, 'id');
+            Cache::put('stripe_product_ids', $stripe_product_ids);
+            return $stripe_product_ids;
         }
     }
 }
