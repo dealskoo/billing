@@ -6,6 +6,7 @@ use Dealskoo\Admin\Facades\AdminMenu;
 use Dealskoo\Admin\Facades\PermissionManager;
 use Dealskoo\Admin\Permission;
 use Dealskoo\Billing\Models\Seller;
+use Dealskoo\Billing\Price;
 use Dealskoo\Seller\Facades\SellerMenu;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Cashier\Cashier;
@@ -20,6 +21,8 @@ class BillingServiceProvider extends ServiceProvider
     public function register()
     {
         Cashier::ignoreMigrations();
+        $this->mergeConfigFrom(__DIR__ . '/../../config/billing.php', 'billing');
+        $this->app->singleton('price', Price::class);
     }
 
     /**

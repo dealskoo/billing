@@ -56,6 +56,7 @@
                 "Dealskoo\\Billing\\Providers\\BillingServiceProvider"
             ],
             "aliases": {
+                "Price": "Dealskoo\\Billing\\Facades\\Price"
             }
         }
     },

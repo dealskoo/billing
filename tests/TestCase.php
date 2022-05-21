@@ -2,6 +2,7 @@
 
 namespace Dealskoo\Billing\Tests;
 
+use Dealskoo\Billing\Facades\Price;
 use Dealskoo\Billing\Providers\BillingServiceProvider;
 
 abstract class TestCase extends \Dealskoo\Seller\Tests\TestCase
@@ -15,7 +16,9 @@ abstract class TestCase extends \Dealskoo\Seller\Tests\TestCase
 
     protected function getPackageAliases($app)
     {
-        return [];
+        return [
+            'Price' => Price::class
+        ];
     }
 
     protected function setUp(): void

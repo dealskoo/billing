@@ -7,4 +7,10 @@ return [
     'plan' => 'Plan',
     'invoices' => 'Invoices',
     'invoice' => 'Invoice',
+    'plans_title' => 'Our Plans and Pricing',
+    'plans_summary' => 'We have plans and prices that fit your business perfectly.',
+    'month' => 'Month',
+    'year' => 'Year',
+    'recommended' => 'Recommended',
+    'choose_plan' => 'Choose Plan',
 ];
