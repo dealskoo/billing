@@ -1,6 +1,6 @@
 @extends('seller::layouts.panel')
 
-@section('title',__('billing::billing.pricing'))
+@section('title',__('billing::billing.plan'))
 @section('body')
     <div class="row">
         <div class="col-12">
@@ -11,10 +11,10 @@
                                 href="{{ route('seller.dashboard') }}">{{ __('seller::seller.dashboard') }}</a></li>
                         <li class="breadcrumb-item"><a
                                 href="javascript: void(0);">{{ __('billing::billing.billing') }}</a></li>
-                        <li class="breadcrumb-item active">{{ __('billing::billing.pricing') }}</li>
+                        <li class="breadcrumb-item active">{{ __('billing::billing.plan') }}</li>
                     </ol>
                 </div>
-                <h4 class="page-title">{{ __('billing::billing.pricing') }}</h4>
+                <h4 class="page-title">{{ __('billing::billing.plan') }}</h4>
             </div>
         </div>
     </div>

@@ -1,5 +1,5 @@
 <?php
 return [
     'billing' => 'Billing',
-    'pricing' => 'Pricing',
+    'plan' => 'Plan',
 ];

@@ -54,7 +54,7 @@ class BillingServiceProvider extends ServiceProvider
         PermissionManager::add(new Permission('billing.billing', 'Billing'));
 
         SellerMenu::dropdown('billing::billing.billing', function ($menu) {
-
+            $menu->route('seller.plan', 'billing::billing.plan');
         }, ['icon' => 'uil-usd-circle me-1'])->order(99);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-use Dealskoo\Billing\Http\Controllers\Seller\PricingController;
+use Dealskoo\Billing\Http\Controllers\Seller\PlanController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['web', 'seller_locale'])->prefix(config('seller.route.prefix'))->name('seller.')->group(function () {
@@ -11,7 +11,7 @@ Route::middleware(['web', 'seller_locale'])->prefix(config('seller.route.prefix'
 
     Route::middleware(['auth:seller', 'verified:seller.verification.notice', 'seller_active'])->group(function () {
 
-        Route::get('/pricing', [PricingController::class, 'index'])->name('pricing');
+        Route::get('/plan', [PlanController::class, 'index'])->name('plan');
 
         Route::middleware(['password.confirm:seller.password.confirm'])->group(function () {
 
