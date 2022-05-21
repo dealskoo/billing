@@ -36,8 +36,16 @@ class BillingServiceProvider extends ServiceProvider
             $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
 
             $this->publishes([
+                __DIR__ . '/../../config/billing.php' => config_path('billing.php')
+            ], 'config');
+
+            $this->publishes([
                 __DIR__ . '/../../resources/lang' => resource_path('lang/vendor/billing')
             ], 'lang');
+
+            $this->publishes([
+                __DIR__ . '/../../resources/views/pricing' => resource_path('views/vendor/billing/pricing')
+            ], 'views');
         }
 
         Cashier::useCustomerModel(Seller::class);

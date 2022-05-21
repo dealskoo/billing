@@ -4,6 +4,7 @@ return [
     'subscription' => 'Subscription',
     'payment_methods' => 'Payment Methods',
     'subscription_history' => 'Subscription History',
+    'pricing' => 'Pricing',
     'plans' => 'Plans',
     'plan' => 'Plan',
     'invoices' => 'Invoices',
@@ -14,4 +15,5 @@ return [
     'year' => 'Year',
     'recommended' => 'Recommended',
     'choose_plan' => 'Choose Plan',
+    'subscribe' => 'Subscribe',
 ];
