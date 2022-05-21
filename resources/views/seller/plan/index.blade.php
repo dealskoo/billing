@@ -56,7 +56,8 @@
                                         <p class="card-pricing-plan-name fw-bold text-uppercase">{{ __(\Dealskoo\Billing\Facades\Price::name($plan['stripe_id'])) }}</p>
                                         <i class="card-pricing-icon {{ \Dealskoo\Billing\Facades\Price::icon($plan['stripe_id']) }} text-primary"></i>
                                         <h2 class="card-pricing-price">{{ \Dealskoo\Billing\Facades\Price::money($plan['stripe_id']) }}
-                                            <span>/ {{ __('billing::billing.month') }}</span></h2>
+                                            <span>/ {{ __(\Dealskoo\Billing\Facades\Price::interval($plan['stripe_id'])) }}</span>
+                                        </h2>
                                         <ul class="card-pricing-features">
                                             @foreach($plan['items'] as $item)
                                                 <li>{{ $item }}</li>
@@ -86,7 +87,8 @@
                                         <p class="card-pricing-plan-name fw-bold text-uppercase">{{ __(\Dealskoo\Billing\Facades\Price::name($plan['stripe_id'])) }}</p>
                                         <i class="card-pricing-icon {{ \Dealskoo\Billing\Facades\Price::icon($plan['stripe_id']) }} text-primary"></i>
                                         <h2 class="card-pricing-price">{{ \Dealskoo\Billing\Facades\Price::money($plan['stripe_id']) }}
-                                            <span>/ {{ __('billing::billing.year') }}</span></h2>
+                                            <span>/ {{ __(\Dealskoo\Billing\Facades\Price::interval($plan['stripe_id'])) }}</span>
+                                        </h2>
                                         <ul class="card-pricing-features">
                                             @foreach($plan['items'] as $item)
                                                 <li>{{ __($item) }}</li>

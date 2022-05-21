@@ -54,4 +54,22 @@ class Price
         $product = $this->product($stripe_id);
         return $product->metadata['icon'] ?? '';
     }
+
+    public function interval($stripe_id)
+    {
+        $price = $this->price($stripe_id);
+        return $price->recurring->interval;
+    }
+
+    public function plan($stripe_id)
+    {
+        $plans = config('billing.plans');
+        foreach ($plans as $plan) {
+            foreach ($plan as $p) {
+                if ($p['stripe_id'] == $stripe_id) {
+                    return $p;
+                }
+            }
+        }
+    }
 }
