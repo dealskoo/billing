@@ -1,6 +1,9 @@
 <?php
 return [
     'currency_symbol' => '$',
+    'lite_stripe_id' => 'prod_LixG9s9HfsDjRm',
+    'standard_stripe_id' => 'prod_LixHPY2vaWBhVy',
+    'advanced_stripe_id' => 'prod_LixHq8jA25w6xx',
     'plans' => [
         'month' => [
             'lite' => [
