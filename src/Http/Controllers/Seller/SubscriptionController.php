@@ -10,6 +10,11 @@ use Laravel\Cashier\Exceptions\IncompletePayment;
 
 class SubscriptionController extends SellerController
 {
+    public function portal(Request $request)
+    {
+        return $request->user()->redirectToBillingPortal(route('seller.dashboard'));
+    }
+
     public function form(Request $request, $id)
     {
         $products = Cashier::stripe()->products->all();

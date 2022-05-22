@@ -1,7 +1,6 @@
 <?php
 
 use Dealskoo\Billing\Http\Controllers\PricingController;
-use Dealskoo\Billing\Http\Controllers\Seller\InvoiceController;
 use Dealskoo\Billing\Http\Controllers\Seller\PaymentController;
 use Dealskoo\Billing\Http\Controllers\Seller\PlanController;
 use Dealskoo\Billing\Http\Controllers\Seller\SubscriptionController;
@@ -18,7 +17,7 @@ Route::middleware(['web', 'seller_locale'])->prefix(config('seller.route.prefix'
     Route::middleware(['auth:seller', 'verified:seller.verification.notice', 'seller_active'])->group(function () {
 
         Route::get('/plans', [PlanController::class, 'index'])->name('plans.index');
-        Route::get('/invoices', [InvoiceController::class, 'index'])->name('invoices.index');
+        Route::get('/billing/portal', [SubscriptionController::class, 'portal'])->name('billing.portal');
 
         Route::resource('payment', PaymentController::class)->except(['create', 'edit']);
 
