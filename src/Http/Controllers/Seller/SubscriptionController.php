@@ -54,7 +54,7 @@ class SubscriptionController extends SellerController
         ]);
         try {
             if ($request->input('promotion_code')) {
-                $request->user()->newSubscription('default', $request->input('price'))->withCoupon($request->input('promotion_code'))->create($request->input('payment_method'));
+                $request->user()->newSubscription('default', $request->input('price'))->withPromotionCode($request->input('promotion_code'))->create($request->input('payment_method'));
             } else {
                 $request->user()->newSubscription('default', $request->input('price'))->create($request->input('payment_method'));
             }
