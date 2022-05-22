@@ -9,6 +9,6 @@ class InvoiceController extends SellerController
 {
     public function index(Request $request)
     {
-
+        return view('billing::seller.invoice.index', []);
     }
 }
