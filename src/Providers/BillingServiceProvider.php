@@ -2,9 +2,6 @@
 
 namespace Dealskoo\Billing\Providers;
 
-use Dealskoo\Admin\Facades\AdminMenu;
-use Dealskoo\Admin\Facades\PermissionManager;
-use Dealskoo\Admin\Permission;
 use Dealskoo\Billing\Models\Seller;
 use Dealskoo\Billing\Price;
 use Dealskoo\Seller\Facades\SellerMenu;
@@ -49,18 +46,11 @@ class BillingServiceProvider extends ServiceProvider
         }
 
         Cashier::useCustomerModel(Seller::class);
-        $this->loadRoutesFrom(__DIR__ . '/../../routes/admin.php');
         $this->loadRoutesFrom(__DIR__ . '/../../routes/seller.php');
 
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'billing');
 
         $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', 'billing');
-
-        AdminMenu::dropdown('billing::billing.billing', function ($menu) {
-
-        }, ['icon' => 'uil-usd-circle', 'permission' => 'billing.billing'])->order(98);
-
-        PermissionManager::add(new Permission('billing.billing', 'Billing'));
 
         SellerMenu::dropdown('billing::billing.billing', function ($menu) {
             $menu->route('seller.plans.index', 'billing::billing.plans');
