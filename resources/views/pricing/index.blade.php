@@ -42,18 +42,20 @@
             </div>
             <ul class="nav nav-tabs justify-content-center nav-bordered my-4">
                 <li class="nav-item">
-                    <a href="#month-plans" data-bs-toggle="tab" aria-expanded="true" class="nav-link active">
+                    <a href="#month-plans" data-bs-toggle="tab" aria-expanded="@if(!$year_plan)true @else false @endif"
+                       class="nav-link @if(!$year_plan)active @endif">
                         <span>{{ __('billing::billing.month') }}</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#year-plans" data-bs-toggle="tab" aria-expanded="false" class="nav-link">
+                    <a href="#year-plans" data-bs-toggle="tab" aria-expanded="@if($year_plan)true @else false @endif"
+                       class="nav-link @if($year_plan)active @endif">
                         <span>{{ __('billing::billing.year') }}</span>
                     </a>
                 </li>
             </ul>
             <div class="tab-content">
-                <div class="tab-pane show active" id="month-plans">
+                <div class="tab-pane @if(!$year_plan)show active @endif" id="month-plans">
                     <!-- Month Plans -->
                     <div class="row mt-sm-5 mt-3 mb-3">
                         @foreach(config('billing.plans.month') as $plan)
@@ -105,7 +107,7 @@
                     </div>
                     <!-- end row -->
                 </div>
-                <div class="tab-pane" id="year-plans">
+                <div class="tab-pane @if($year_plan)show active @endif" id="year-plans">
                     <!-- Year Plans -->
                     <div class="row mt-sm-5 mt-3 mb-3">
                         @foreach(config('billing.plans.year') as $plan)
