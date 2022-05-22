@@ -49,7 +49,6 @@ class BillingServiceProvider extends ServiceProvider
         }
 
         Cashier::useCustomerModel(Seller::class);
-
         $this->loadRoutesFrom(__DIR__ . '/../../routes/admin.php');
         $this->loadRoutesFrom(__DIR__ . '/../../routes/seller.php');
 

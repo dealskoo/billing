@@ -19,6 +19,31 @@
         </div>
     </div>
     <div class="row justify-content-center">
-
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <form id="payment-form">
+                        <div id="payment-element"></div>
+                        <button id="submit">Subscribe</button>
+                        <div id="error-message"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
+@endsection
+@section('script')
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+        $(function () {
+            const stripe = Stripe("{{ config('cashier.key') }}");
+            const options = {
+                clientSecret: '{{ $clientSecret }}',
+                appearance: {}
+            }
+            const elements = stripe.elements(options);
+            const paymentElement = elements.create('payment');
+            paymentElement.mount('#payment-element');
+        });
+    </script>
 @endsection
