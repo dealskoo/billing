@@ -24,6 +24,18 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
+                        @if(!empty(session('success')))
+                            <div class="alert alert-success">
+                                <p class="mb-0">{{ session('success') }}</p>
+                            </div>
+                        @endif
+                        @if(!empty($errors->all()))
+                            <div class="alert alert-danger">
+                                @foreach($errors->all() as $error)
+                                    <p class="mb-0">{{ $error }}</p>
+                                @endforeach
+                            </div>
+                        @endif
                         <input type="hidden" name="price" value="{{ $price->id }}">
                         <div class="row">
                             <div class="col-md-12 mb-3">
@@ -49,7 +61,8 @@
                                                 <label class="form-check-label font-16 fw-bold"
                                                        for="{{$key}}">
                                                     <span
-                                                        class="text-uppercase">{{ $method->card->brand }}</span><span class="ms-2">{{ $method->billing_details->name }}</span><span
+                                                        class="text-uppercase">{{ $method->card->brand }}</span><span
+                                                        class="ms-2">{{ $method->billing_details->name }}</span><span
                                                         class="ms-2">•••• {{ $method->card->last4 }}</span><span
                                                         class="ms-2">{{ $method->card->exp_month }}/{{$method->card->exp_year}}
                                                 </label>
