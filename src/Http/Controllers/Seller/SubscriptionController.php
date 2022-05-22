@@ -10,11 +10,6 @@ use Laravel\Cashier\Exceptions\IncompletePayment;
 
 class SubscriptionController extends SellerController
 {
-    public function index(Request $request)
-    {
-        return view('billing::seller.subscription.history');
-    }
-
     public function form(Request $request, $id)
     {
         $products = Cashier::stripe()->products->all();

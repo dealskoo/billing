@@ -64,9 +64,8 @@ class BillingServiceProvider extends ServiceProvider
 
         SellerMenu::dropdown('billing::billing.billing', function ($menu) {
             $menu->route('seller.plans.index', 'billing::billing.plans');
-            $menu->route('seller.invoices.index', 'billing::billing.invoices');
+            $menu->route('seller.invoices.index', 'billing::billing.invoices', [], ['target' => '_blank']);
             $menu->route('seller.payment.index', 'billing::billing.payment_methods');
-            $menu->route('seller.subscription.history', 'billing::billing.subscription_history');
         }, ['icon' => 'uil-usd-circle me-1'])->order(99);
     }
 }
