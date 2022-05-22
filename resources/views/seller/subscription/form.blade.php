@@ -36,7 +36,7 @@
                         <div class="row mb-3">
                             @foreach($methods as $key=>$method)
                                 <div class="col-md-6">
-                                    <div class="border p-3 rounded mb-3 mb-md-0">
+                                    <div class="border p-3 rounded mb-3">
                                         <div class="mb-0 address-lg">
                                             <div class="form-check">
                                                 <input type="radio" id="{{$key}}" name="payment_method"
@@ -47,10 +47,12 @@
                                                     @endif
                                                     @endisset>
                                                 <label class="form-check-label font-16 fw-bold"
-                                                       for="{{$key}}">{{ $method->billing_details->name }}
+                                                       for="{{$key}}">
                                                     <span
-                                                        class="ms-2 text-uppercase">{{ $method->card->brand }}</span> {{ $method->card->last4 }} {{ $method->card->exp_month }}
-                                                    /{{$method->card->exp_year}}</label>
+                                                        class="text-uppercase">{{ $method->card->brand }}</span><span class="ms-2">{{ $method->billing_details->name }}</span><span
+                                                        class="ms-2">•••• {{ $method->card->last4 }}</span><span
+                                                        class="ms-2">{{ $method->card->exp_month }}/{{$method->card->exp_year}}
+                                                </label>
                                             </div>
                                         </div>
                                     </div>
