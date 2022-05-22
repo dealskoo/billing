@@ -79,7 +79,7 @@ class SubscriptionController extends SellerController
         if (!$request->user()->subscribedToProduct(Price::products(), 'default')) {
             return redirect(route('seller.plans.index'));
         }
-        $request->user()->subscription('default')->swap($id);
+        $request->user()->subscription('default')->swapAndInvoice($id);
         return redirect()->back();
     }
 
