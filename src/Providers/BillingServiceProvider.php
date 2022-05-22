@@ -53,9 +53,9 @@ class BillingServiceProvider extends ServiceProvider
         $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', 'billing');
 
         SellerMenu::dropdown('billing::billing.billing', function ($menu) {
-            $menu->route('seller.plans.index', 'billing::billing.plans');
+            $menu->route('seller.subscription.plans', 'billing::billing.plans');
             $menu->route('seller.payment.index', 'billing::billing.payment_methods');
-            $menu->route('seller.billing.portal', 'billing::billing.billing_portal', [], ['target' => '_blank']);
+            $menu->route('seller.subscription.portal', 'billing::billing.billing_portal', [], ['target' => '_blank']);
         }, ['icon' => 'uil-usd-circle me-1'])->order(99);
     }
 }
