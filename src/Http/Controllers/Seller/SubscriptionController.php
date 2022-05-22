@@ -3,6 +3,7 @@
 namespace Dealskoo\Billing\Http\Controllers\Seller;
 
 use Dealskoo\Billing\Facades\Price;
+use Dealskoo\Billing\Rules\PromotionCode;
 use Dealskoo\Seller\Http\Controllers\Controller as SellerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -48,13 +49,22 @@ class SubscriptionController extends SellerController
         if ($request->user()->subscribedToProduct(Price::products(), 'default')) {
             return redirect(route('seller.dashboard'));
         }
-        $request->validate([
-            'price' => ['required', 'string'],
-            'payment_method' => ['required', 'string']
-        ]);
+        if ($request->input('promotion_code')) {
+            $request->validate([
+                'price' => ['required', 'string'],
+                'payment_method' => ['required', 'string'],
+                'promotion_code' => [new PromotionCode($request->user())]
+            ]);
+        } else {
+            $request->validate([
+                'price' => ['required', 'string'],
+                'payment_method' => ['required', 'string']
+            ]);
+        }
         try {
             if ($request->input('promotion_code')) {
-                $request->user()->newSubscription('default', $request->input('price'))->withPromotionCode($request->input('promotion_code'))->create($request->input('payment_method'));
+                $promotion_code = $request->user()->findActivePromotionCode($request->input('promotion_code'));
+                $request->user()->newSubscription('default', $request->input('price'))->withPromotionCode($promotion_code->id)->create($request->input('payment_method'));
             } else {
                 $request->user()->newSubscription('default', $request->input('price'))->create($request->input('payment_method'));
             }
