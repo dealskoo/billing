@@ -62,11 +62,8 @@
                         <table class="table table-centered w-100 dt-responsive nowrap">
                             <thead>
                             <tr>
-                                <th>{{ __('billing::billing.card_holder_name') }}</th>
-                                <th>{{ __('billing::billing.card_brand') }}</th>
-                                <th>{{ __('billing::billing.last4') }}</th>
-                                <th>{{ __('billing::billing.exp') }}</th>
-                                <th>{{ __('billing::billing.postal_code') }}</th>
+                                <th>{{ __('billing::billing.bank') }}</th>
+                                <th>{{ __('billing::billing.card') }}</th>
                                 <th class="table-action">{{ __('billing::billing.action') }}</th>
                             </tr>
                             </thead>
@@ -74,18 +71,20 @@
                             @foreach($methods as $method)
                                 <tr>
                                     <td>
-                                        @isset($default)
-                                            @if($method->id == $default->id)
-                                                <span
-                                                    class="badge bg-primary">{{ __('billing::billing.default') }}</span>
-                                            @endif
-                                        @endisset
-                                        {{ $method->billing_details->name }}
+                                        <div class="btn btn-sm btn-outline-secondary position-relative ms-1">
+                                            <span class="text-uppercase">{{ $method->card->brand }}</span>
+                                            @isset($default)
+                                                @if($method->id == $default->id)
+                                                    <span
+                                                        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{ __('billing::billing.default') }}</span>
+                                                @endif
+                                            @endisset
+                                        </div>
                                     </td>
-                                    <td class="text-uppercase">{{ $method->card->brand }}</td>
-                                    <td>{{ $method->card->last4 }}</td>
-                                    <td>{{ $method->card->exp_month }}/{{$method->card->exp_year}}</td>
-                                    <td>{{ $method->billing_details->address->postal_code }}</td>
+                                    <td><span>{{ $method->billing_details->name }}</span><span
+                                            class="ms-2">•••• {{ $method->card->last4 }}</span><span
+                                            class="ms-2">{{ $method->card->exp_month }}/{{$method->card->exp_year}}</span>
+                                    </td>
                                     <td>
                                         @isset($default)
                                             @if($method->id != $default->id)
