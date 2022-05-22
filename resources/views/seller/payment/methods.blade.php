@@ -122,38 +122,41 @@
 @section('script')
     <script src="https://js.stripe.com/v3/"></script>
     <script>
-        $(function () {
-            const stripe = Stripe("{{ config('cashier.key') }}");
-            const elements = stripe.elements();
-            const cardElement = elements.create('card');
-            cardElement.mount('#card-element');
-            const cardHolderName = document.getElementById('card-holder-name');
-            const form = document.getElementById('payment-form');
-            const cardButton = document.getElementById('card-button');
-            const cardErrors = $('#card-errors');
-            const clientSecret = cardButton.dataset.secret;
-            form.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                cardButton.disable = true;
-                const {setupIntent, error} = await stripe.confirmCardSetup(clientSecret, {
-                    payment_method: {
-                        card: cardElement,
-                        billing_details: {name: cardHolderName.value}
-                    }
-                });
-                if (error) {
-                    cardButton.disable = false;
-                    cardErrors.html(error.message);
-                    cardErrors.removeClass('d-none');
-                } else {
-                    let payment_method = document.createElement('input');
-                    payment_method.setAttribute('type', 'hidden');
-                    payment_method.setAttribute('name', 'payment_method');
-                    payment_method.setAttribute('value', setupIntent.payment_method);
-                    form.appendChild(payment_method);
-                    form.submit();
+        let style = {
+            base: {
+                lineHeight: '1.6',
+            }
+        };
+        const stripe = Stripe("{{ config('cashier.key') }}");
+        const elements = stripe.elements();
+        const cardElement = elements.create('card', {style: style});
+        cardElement.mount('#card-element');
+        const cardHolderName = document.getElementById('card-holder-name');
+        const form = document.getElementById('payment-form');
+        const cardButton = document.getElementById('card-button');
+        const cardErrors = document.getElementById('card-errors');
+        const clientSecret = cardButton.dataset.secret;
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            cardButton.disable = true;
+            const {setupIntent, error} = await stripe.confirmCardSetup(clientSecret, {
+                payment_method: {
+                    card: cardElement,
+                    billing_details: {name: cardHolderName.value}
                 }
             });
+            if (error) {
+                cardButton.disable = false;
+                cardErrors.innerHTML = error.message;
+                cardErrors.classList.remove('d-none');
+            } else {
+                let payment_method = document.createElement('input');
+                payment_method.setAttribute('type', 'hidden');
+                payment_method.setAttribute('name', 'payment_method');
+                payment_method.setAttribute('value', setupIntent.payment_method);
+                form.appendChild(payment_method);
+                form.submit();
+            }
         });
 
         function submit_form(id, btn) {

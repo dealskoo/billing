@@ -39,10 +39,19 @@
             const stripe = Stripe("{{ config('cashier.key') }}");
             const options = {
                 clientSecret: '{{ $clientSecret }}',
-                appearance: {}
+                appearance: {
+                    theme: 'flat'
+                }
             }
             const elements = stripe.elements(options);
-            const paymentElement = elements.create('payment');
+            const paymentElement = elements.create('payment', {
+                fields: {
+                    billingDetails: {
+                        name: 'never',
+                        email: 'never',
+                    }
+                }
+            });
             paymentElement.mount('#payment-element');
         });
     </script>
