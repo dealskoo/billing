@@ -73,7 +73,7 @@
                                             <span>/ {{ __(\Dealskoo\Billing\Facades\Price::interval($plan['stripe_id'])) }}</span>
                                         </h2>
                                         <ul class="card-pricing-features">
-                                            @foreach($plan['items'] as $item)
+                                            @foreach($plan['features'] as $item)
                                                 <li>{{ $item }}</li>
                                             @endforeach
                                         </ul>
@@ -125,7 +125,7 @@
                                             <span>/ {{ __(\Dealskoo\Billing\Facades\Price::interval($plan['stripe_id'])) }}</span>
                                         </h2>
                                         <ul class="card-pricing-features">
-                                            @foreach($plan['items'] as $item)
+                                            @foreach($plan['features'] as $item)
                                                 <li>{{ __($item) }}</li>
                                             @endforeach
                                         </ul>

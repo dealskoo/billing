@@ -5,7 +5,7 @@ return [
         'month' => [
             'lite' => [
                 'stripe_id' => 'price_1L1VMLJmj5aJXUxxNG4Amm5p',
-                'items' => [
+                'features' => [
                     '50 GB Storage',
                     '900 GB Bandwidth',
                     '2 Domain',
@@ -16,7 +16,7 @@ return [
             ],
             'standard' => [
                 'stripe_id' => 'price_1L1VMyJmj5aJXUxxKFFamn85',
-                'items' => [
+                'features' => [
                     '50 GB Storage',
                     '900 GB Bandwidth',
                     '2 Domain',
@@ -27,7 +27,7 @@ return [
             ],
             'advanced' => [
                 'stripe_id' => 'price_1L1VNOJmj5aJXUxxN9X2zb1b',
-                'items' => [
+                'features' => [
                     '50 GB Storage',
                     '900 GB Bandwidth',
                     '2 Domain',
@@ -40,7 +40,7 @@ return [
         'year' => [
             'lite' => [
                 'stripe_id' => 'price_1L1VSoJmj5aJXUxx2hxialDJ',
-                'items' => [
+                'features' => [
                     '50 GB Storage',
                     '900 GB Bandwidth',
                     '2 Domain',
@@ -51,7 +51,7 @@ return [
             ],
             'standard' => [
                 'stripe_id' => 'price_1L1Va2Jmj5aJXUxxjcXhyc1E',
-                'items' => [
+                'features' => [
                     '50 GB Storage',
                     '900 GB Bandwidth',
                     '2 Domain',
@@ -62,7 +62,7 @@ return [
             ],
             'advanced' => [
                 'stripe_id' => 'price_1L1VamJmj5aJXUxxd2L26Kws',
-                'items' => [
+                'features' => [
                     '50 GB Storage',
                     '900 GB Bandwidth',
                     '2 Domain',
