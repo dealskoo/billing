@@ -30,12 +30,14 @@
             </div>
             <ul class="nav nav-tabs justify-content-center nav-bordered my-4">
                 <li class="nav-item">
-                    <a href="#month-plans" data-bs-toggle="tab" aria-expanded="@if(!$year_plan)true @else false @endif" class="nav-link @if(!$year_plan)active @endif">
+                    <a href="#month-plans" data-bs-toggle="tab" aria-expanded="@if(!$year_plan)true @else false @endif"
+                       class="nav-link @if(!$year_plan)active @endif">
                         <span>{{ __('billing::billing.month') }}</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#year-plans" data-bs-toggle="tab" aria-expanded="@if($year_plan)true @else false @endif" class="nav-link @if($year_plan)active @endif">
+                    <a href="#year-plans" data-bs-toggle="tab" aria-expanded="@if($year_plan)true @else false @endif"
+                       class="nav-link @if($year_plan)active @endif">
                         <span>{{ __('billing::billing.year') }}</span>
                     </a>
                 </li>
@@ -59,8 +61,8 @@
                                             <span>/ {{ __(\Dealskoo\Billing\Facades\Price::interval($plan['stripe_id'])) }}</span>
                                         </h2>
                                         <ul class="card-pricing-features">
-                                            @foreach($plan['features'] as $item)
-                                                <li>{{ $item }}</li>
+                                            @foreach($plan['features'] as $feature)
+                                                <li class="{{ $feature['class'] }}">{{ __($feature['desc']) }}</li>
                                             @endforeach
                                         </ul>
                                         @if(request()->user('seller')->subscribedToPrice($plan['stripe_id'],'default'))
@@ -105,8 +107,8 @@
                                             <span>/ {{ __(\Dealskoo\Billing\Facades\Price::interval($plan['stripe_id'])) }}</span>
                                         </h2>
                                         <ul class="card-pricing-features">
-                                            @foreach($plan['features'] as $item)
-                                                <li>{{ __($item) }}</li>
+                                            @foreach($plan['features'] as $feature)
+                                                <li class="{{ $feature['class'] }}">{{ __($feature['desc']) }}</li>
                                             @endforeach
                                         </ul>
                                         @if(request()->user('seller')->subscribedToPrice($plan['stripe_id'],'default'))
