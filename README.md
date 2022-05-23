@@ -10,3 +10,13 @@ Add Metadata
 ## Config Auth
 
 Update `providers.sellers.model` to `Dealskoo\Billing\Models\Seller::class` in file `config/auth.php`
+
+## Add Middleware
+
+`App\Http\Kernel.php`
+
+```php
+    protected $routeMiddleware = [
+        'subscription' => \Dealskoo\Billing\Http\Middleware\Subscription::class,
+    ];
+```
