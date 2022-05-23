@@ -49,4 +49,31 @@ class Seller extends BaseSeller
         }
         return null;
     }
+
+    public function is_lite_plan()
+    {
+        $plan = $this->plan_name();
+        if ($plan && $plan == Str::upper('lite')) {
+            return true;
+        }
+        return false;
+    }
+
+    public function is_standard_plan()
+    {
+        $plan = $this->plan_name();
+        if ($plan && $plan == Str::upper('standard')) {
+            return true;
+        }
+        return false;
+    }
+
+    public function is_advanced_plan()
+    {
+        $plan = $this->plan_name();
+        if ($plan && $plan == Str::upper('advanced')) {
+            return true;
+        }
+        return false;
+    }
 }
