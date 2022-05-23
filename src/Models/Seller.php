@@ -67,7 +67,7 @@ class Seller extends BaseSeller
     public function has_lite_plan()
     {
         $plan = $this->plan_name();
-        if (($plan && $plan == Str::upper('lite')) || $this->has_standard_plan() || $this->has_advanced_plan()) {
+        if (($this->subscribed('default') && $plan && $plan == Str::upper('lite')) || $this->has_standard_plan() || $this->has_advanced_plan()) {
             return true;
         }
         return false;
@@ -76,7 +76,7 @@ class Seller extends BaseSeller
     public function has_standard_plan()
     {
         $plan = $this->plan_name();
-        if (($plan && $plan == Str::upper('standard')) || $this->has_advanced_plan()) {
+        if (($this->subscribed('default') && $plan && $plan == Str::upper('standard')) || $this->has_advanced_plan()) {
             return true;
         }
         return false;
@@ -85,7 +85,7 @@ class Seller extends BaseSeller
     public function has_advanced_plan()
     {
         $plan = $this->plan_name();
-        if ($plan && $plan == Str::upper('advanced')) {
+        if ($this->subscribed('default') && $plan && $plan == Str::upper('advanced')) {
             return true;
         }
         return false;
