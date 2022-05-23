@@ -15,7 +15,11 @@ class MenuTest extends TestCase
     {
         $this->assertNotNull(SellerMenu::findBy('title', 'billing::billing.billing'));
         $childs = SellerMenu::findBy('title', 'billing::billing.billing')->getChilds();
-//        $menu = collect($childs)->where('title', 'billing::billing.billing');
-//        $this->assertNotEmpty($menu);
+        $menu = collect($childs)->where('title', 'billing::billing.plans');
+        $this->assertNotEmpty($menu);
+        $menu = collect($childs)->where('title', 'billing::billing.payment_methods');
+        $this->assertNotEmpty($menu);
+        $menu = collect($childs)->where('title', 'billing::billing.billing_portal');
+        $this->assertNotEmpty($menu);
     }
 }

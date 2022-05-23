@@ -77,7 +77,7 @@ class SubscriptionController extends SellerController
     public function swap(Request $request, $id)
     {
         if (!$request->user()->subscribedToProduct(Price::products(), 'default')) {
-            return redirect(route('seller.plans.index'));
+            return redirect(route('seller.subscription.plans'));
         }
         $request->user()->subscription('default')->swapAndInvoice($id);
         return redirect()->back();
@@ -86,7 +86,7 @@ class SubscriptionController extends SellerController
     public function cancel(Request $request)
     {
         if (!$request->user()->subscribedToProduct(Price::products(), 'default')) {
-            return redirect(route('seller.plans.index'));
+            return redirect(route('seller.subscription.plans'));
         }
         $request->user()->subscription('default')->cancel();
         return redirect()->back();
@@ -95,7 +95,7 @@ class SubscriptionController extends SellerController
     public function resume(Request $request)
     {
         if (!$request->user()->subscribedToProduct(Price::products(), 'default')) {
-            return redirect(route('seller.plans.index'));
+            return redirect(route('seller.subscription.plans'));
         }
         $request->user()->subscription('default')->resume();
         return redirect()->back();
