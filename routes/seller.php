@@ -1,13 +1,10 @@
 <?php
 
-use Dealskoo\Billing\Http\Controllers\PricingController;
 use Dealskoo\Billing\Http\Controllers\Seller\PaymentController;
 use Dealskoo\Billing\Http\Controllers\Seller\SubscriptionController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['web', 'seller_locale', 'affiliate'])->prefix(config('seller.route.prefix'))->name('seller.')->group(function () {
-
-    Route::get('/pricing', [PricingController::class, 'index'])->name('pricing');
 
     Route::middleware(['guest:seller'])->group(function () {
 

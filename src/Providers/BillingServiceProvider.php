@@ -39,10 +39,6 @@ class BillingServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__ . '/../../resources/lang' => resource_path('lang/vendor/billing')
             ], 'lang');
-
-            $this->publishes([
-                __DIR__ . '/../../resources/views/pricing' => resource_path('views/vendor/billing/pricing')
-            ], 'views');
         }
 
         Cashier::useCustomerModel(Seller::class);
