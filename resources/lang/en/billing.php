@@ -4,8 +4,6 @@ return [
     'subscription' => 'Subscription',
     'payment_methods' => 'Payment methods',
     'add_payment_method' => 'Add payment method',
-    'subscription_history' => 'Subscription history',
-    'pricing' => 'Pricing',
     'plans' => 'Plans',
     'plan' => 'Plan',
     'billing_portal' => 'Billing Portal',

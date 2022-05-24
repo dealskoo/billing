@@ -1,4 +1,27 @@
 <?php
 return [
-
+    'billing' => '支付',
+    'subscription' => '订阅',
+    'payment_methods' => '支付方式',
+    'add_payment_method' => '添加支付方式',
+    'plans' => '付款方案',
+    'plan' => '付款方案',
+    'billing_portal' => '付款信息',
+    'plans_title' => '付款方案和价格',
+    'plans_summary' => '我们的计划和价格非常适合您的业务。',
+    'month' => '月付',
+    'year' => '年付',
+    'recommended' => '推荐',
+    'choose_plan' => '选择此方案',
+    'subscribe' => '订阅',
+    'subscribed' => '已订阅',
+    'cancel' => '取消',
+    'resume' => '恢复',
+    'card_holder_name' => '姓名',
+    'bank'=>'银行',
+    'card' => '卡号',
+    'action' => '操作',
+    'set_default' => '设置默认',
+    'default' => '默认',
+    'promotion_code' => '促销代码',
 ];
