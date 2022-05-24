@@ -4,7 +4,7 @@ return [
     'plans' => [
         'month' => [
             'lite' => [
-                'stripe_id' => 'price_1L1VMLJmj5aJXUxxNG4Amm5p',
+                'stripe_id' => env('LITE_MONTH_PRICE_STRIPE_ID', 'price_1L1VMLJmj5aJXUxxNG4Amm5p'),
                 'features' => [
                     ['class' => '', 'desc' => 'Unlimited Products'],
                     ['class' => '', 'desc' => 'Unlimited Coupons'],
@@ -18,7 +18,7 @@ return [
                 ]
             ],
             'standard' => [
-                'stripe_id' => 'price_1L1VMyJmj5aJXUxxKFFamn85',
+                'stripe_id' => env('STANDARD_MONTH_PRICE_STRIPE_ID', 'price_1L1VMyJmj5aJXUxxKFFamn85'),
                 'features' => [
                     ['class' => '', 'desc' => 'Unlimited Products'],
                     ['class' => '', 'desc' => 'Unlimited Coupons'],
@@ -32,7 +32,7 @@ return [
                 ]
             ],
             'advanced' => [
-                'stripe_id' => 'price_1L1VNOJmj5aJXUxxN9X2zb1b',
+                'stripe_id' => env('ADVANCED_MONTH_PRICE_STRIPE_ID', 'price_1L1VNOJmj5aJXUxxN9X2zb1b'),
                 'features' => [
                     ['class' => '', 'desc' => 'Unlimited Products'],
                     ['class' => '', 'desc' => 'Unlimited Coupons'],
@@ -48,7 +48,7 @@ return [
         ],
         'year' => [
             'lite' => [
-                'stripe_id' => 'price_1L1VSoJmj5aJXUxx2hxialDJ',
+                'stripe_id' => env('LITE_YEAR_PRICE_STRIPE_ID', 'price_1L1VSoJmj5aJXUxx2hxialDJ'),
                 'features' => [
                     ['class' => '', 'desc' => 'Unlimited Products'],
                     ['class' => '', 'desc' => 'Unlimited Coupons'],
@@ -62,7 +62,7 @@ return [
                 ]
             ],
             'standard' => [
-                'stripe_id' => 'price_1L1Va2Jmj5aJXUxxjcXhyc1E',
+                'stripe_id' => env('STANDARD_YEAR_PRICE_STRIPE_ID', 'price_1L1Va2Jmj5aJXUxxjcXhyc1E'),
                 'features' => [
                     ['class' => '', 'desc' => 'Unlimited Products'],
                     ['class' => '', 'desc' => 'Unlimited Coupons'],
@@ -76,7 +76,7 @@ return [
                 ]
             ],
             'advanced' => [
-                'stripe_id' => 'price_1L1VamJmj5aJXUxxd2L26Kws',
+                'stripe_id' => env('ADVANCED_YEAR_PRICE_STRIPE_ID', 'price_1L1VamJmj5aJXUxxd2L26Kws'),
                 'features' => [
                     ['class' => '', 'desc' => 'Unlimited Products'],
                     ['class' => '', 'desc' => 'Unlimited Coupons'],

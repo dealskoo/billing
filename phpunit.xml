@@ -24,5 +24,11 @@
              value="pk_test_51L1UzHJmj5aJXUxxibodG0qrSHrzIqvP9l4j73A42kZfqu6jutv4IR8x5uIVhh2CDJuaSlj1wesglIXe891r76Kn00XigOqowy"/>
         <env name="STRIPE_SECRET"
              value="sk_test_51L1UzHJmj5aJXUxxprnas3I3wTTawo9vDlnuFvCJlEFYaUctvHMyudtVSmsjB39cPWlyCKs0LL3utpNAQ5vtbulm00KKzkTE0D"/>
+        <env name="LITE_MONTH_PRICE_STRIPE_ID" value="price_1L1VMLJmj5aJXUxxNG4Amm5p"/>
+        <env name="STANDARD_MONTH_PRICE_STRIPE_ID" value="price_1L1VMyJmj5aJXUxxKFFamn85"/>
+        <env name="ADVANCED_MONTH_PRICE_STRIPE_ID" value="price_1L1VNOJmj5aJXUxxN9X2zb1b"/>
+        <env name="LITE_YEAR_PRICE_STRIPE_ID" value="price_1L1VSoJmj5aJXUxx2hxialDJ"/>
+        <env name="STANDARD_YEAR_PRICE_STRIPE_ID" value="price_1L1Va2Jmj5aJXUxxjcXhyc1E"/>
+        <env name="ADVANCED_YEAR_PRICE_STRIPE_ID" value="price_1L1VamJmj5aJXUxxd2L26Kws"/>
     </php>
 </phpunit>
